@@ -7,8 +7,6 @@ type SuperButtonType = {
 }
 export const SuperButton: React.FC<SuperButtonType> = ({children, changeCount, disabled}) => {
 
-
-
     return (
         <div>
             <button onClick={changeCount} disabled={disabled}>{children}</button>
