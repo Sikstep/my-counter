@@ -1,10 +1,8 @@
 import React, {ChangeEvent, useState} from 'react';
-import {MessagesType} from '../App';
-import {v1} from 'uuid';
 
 type InputMessangerType = {
-    setMessage: (messages: MessagesType[]) => void
-    message: MessagesType[]
+    setMessage: (messages: string[]) => void
+    message: string[]
 }
 
 export const InputMessanger: React.FC<InputMessangerType> = ({setMessage, message}) => {
@@ -14,7 +12,9 @@ export const InputMessanger: React.FC<InputMessangerType> = ({setMessage, messag
         if (inputValue.trim() === '') {
             return
         } else {
-            setMessage([{id: v1(), message: inputValue.trim()},...message])
+            setMessage([inputValue.trim(), ...message])
+            setInputValue('')
+
         }
     }
 

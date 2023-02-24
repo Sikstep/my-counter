@@ -4,10 +4,7 @@ import s from './App.module.css';
 import {SuperButton} from './Components/SuperButton';
 import {InputMessanger} from './Components/InputMessanger';
 
-export type MessagesType = {
-    id: string
-    message: string
-}
+
 
 function App() {
 
@@ -15,7 +12,7 @@ function App() {
     const maxValue = 5;
 
     const [counter, setCounter] = useState<number>(startValue);
-    const [messages, setMessages] = useState<MessagesType[]>([]);
+    const [messages, setMessages] = useState<string[]>([]);
     const incCount = () => {
         if (counter < 5) {
             setCounter(counter + 1)
@@ -26,18 +23,15 @@ function App() {
         setCounter(0)
     }
 
-    const mappedMessages = messages.map(el => {
+    const mappedMessages = messages.map((el, index) => {
         return (
-            <li key={el.id}>{el.message}</li>
+            <li key={index+1}>{el}</li>
         )
     })
 
     const onClickDeleteHandler = () => {
-        if (messages.length === 0) {
-            return
-        } else {
-            let lastMess = []
-            setMessages([])
+        if (messages.length !== 0) {
+            setMessages(messages.slice(0, messages.length - 1))
         }
     }
 
