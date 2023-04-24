@@ -1,24 +1,53 @@
 import React, {useState} from 'react';
 import './App.css';
 import s from './App.module.css';
-import {Route, Switch} from 'react-router-dom';
+import {Navigate, Route, Routes} from 'react-router-dom';
 import {MainCounter} from './Components/MainCounter';
 
-function App() {
+type SettingsCountType = {
+    startValue: number
+    maxValue: number
+}
 
-    const startValue = 0;
-    const maxValue = 5;
+export function App() {
+    const InitialState: SettingsCountType = {
+        startValue: 0,
+        maxValue: 0
+    }
 
-    const [count, setCount] = useState<number>(startValue);
+    const [settingsCount, setSettingsCount] = useState<SettingsCountType>(InitialState);
+    const [error, setError] = useState(false);
 
+    const incriseCountHandler = () => {
+        setSettingsCount({...settingsCount, startValue: settingsCount.startValue + 1})
+    }
+    const resetCountHandler = () => {
+        setSettingsCount({...settingsCount})
+    }
+    const changeStartValueHandler = (newStartValue: number) => {
+        setSettingsCount({...settingsCount, startValue: newStartValue})
+    }
+    const changeMaxValueHandler = (newMaxValue: number) => {
+        setSettingsCount({...settingsCount, startValue: newMaxValue})
+    }
 
     return (
         <div className={s.app}>
             <div className={s.wrapper}>
-                <MainCounter startValue={startValue} count={count} setCount={setCount}/>
+                <Routes>
+                    <Route path={'/'} element={<Navigate to={'/counter'}/>}/>
+
+                    <Route path={'/counter'}
+                           element={<MainCounter count={settingsCount.startValue} incCount={incriseCountHandler}
+                                                 someError={error}
+                                                 resetCount={resetCountHandler} maxValue={settingsCount.maxValue}
+                                                 changeStartValue={changeStartValueHandler}
+                                                 changeMaxValue={changeMaxValueHandler}/>}/>
+                </Routes>
             </div>
         </div>
     );
 }
 
-export default App;
+
+

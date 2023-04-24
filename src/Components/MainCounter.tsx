@@ -1,21 +1,27 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import s from '../App.module.css';
 import {SettingForCounter} from './SettingForCounter';
 import {SuperButton} from './SuperButton';
 
 type MainCounterType = {
-    startValue: number
     count: number
-    setCount: (count: number) => void
+    incCount: () => void
+    someError: boolean
+    resetCount: () => void
+    maxValue: number
+    changeStartValue: (newStartValue: number) => void
+    changeMaxValue: (newMaxValue: number) => void
 }
-export const MainCounter: React.FC<MainCounterType> = ({count, setCount}) => {
-    const IncrimentHandler = () => {
-        setCount(++count);
-    }
-
-    const ResetHandler = () => {
-        setCount(0);
-    }
+export const MainCounter: React.FC<MainCounterType> = ({
+                                                           incCount,
+                                                           someError,
+                                                           count,
+                                                           resetCount,
+                                                           maxValue,
+                                                           changeMaxValue,
+                                                           changeStartValue
+                                                       }) => {
 
     return (
         <>
@@ -23,9 +29,12 @@ export const MainCounter: React.FC<MainCounterType> = ({count, setCount}) => {
                 {count}
             </h2>
             <div className={s.buttonBox}>
-                <SuperButton changeCount={}/>
-                <SuperButton changeCount={}/>
-                <SettingForCounter/>
+                <SuperButton changeCount={() => incCount()}>Inc</SuperButton>
+                <SuperButton changeCount={() => resetCount()}>Reset</SuperButton>
+                <NavLink to={'/settings'}>
+                    <SettingForCounter startValue={count} maxValue={maxValue} changeStartValue={changeStartValue}
+                                       changeMaxValue={changeMaxValue}/>
+                </NavLink>
             </div>
         </>
     );
