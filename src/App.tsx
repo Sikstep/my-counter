@@ -3,6 +3,7 @@ import './App.css';
 import s from './App.module.css';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {MainCounter} from './Components/MainCounter';
+import {SettingForCounter} from './Components/SettingForCounter';
 
 type SettingsCountType = {
     startValue: number
@@ -36,13 +37,20 @@ export function App() {
             <div className={s.wrapper}>
                 <Routes>
                     <Route path={'/'} element={<Navigate to={'/counter'}/>}/>
-
                     <Route path={'/counter'}
-                           element={<MainCounter count={settingsCount.startValue} incCount={incriseCountHandler}
-                                                 someError={error}
-                                                 resetCount={resetCountHandler} maxValue={settingsCount.maxValue}
-                                                 changeStartValue={changeStartValueHandler}
-                                                 changeMaxValue={changeMaxValueHandler}/>}/>
+                           element={<MainCounter
+                               count={settingsCount.startValue}
+                               incCount={incriseCountHandler}
+                               someError={error}
+                               resetCount={resetCountHandler}
+                               maxValue={settingsCount.maxValue}
+                               changeStartValue={changeStartValueHandler}
+                               changeMaxValue={changeMaxValueHandler}/>}/>
+                    <Route path={'/settings'} element={<SettingForCounter
+                        startValue={settingsCount.startValue}
+                        maxValue={settingsCount.maxValue}
+                        changeStartValue={changeStartValueHandler}
+                        changeMaxValue={changeMaxValueHandler}/>}/>
                 </Routes>
             </div>
         </div>

@@ -43,7 +43,7 @@
 .buttonBox {
     display: flex;
     justify-content: space-evenly;
-    height: 40%;
+    height: 30%;
     width: 100%;
     border: 3px solid #00a3b2;
     border-radius: 5px;
@@ -55,6 +55,7 @@
     background-color: gray;
     border: 3px solid #00a3b2;
     border-radius: 5px;
+    text-decoration: none;
 }
 
 .buttonBox button:hover {

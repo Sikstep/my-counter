@@ -2,19 +2,21 @@ import React from 'react';
 
 type SuperButtonType = {
     children: React.ReactNode
-    changeCount: () => void
+    changeCount?: () => void
     disabled?: boolean
 }
 export const SuperButton: React.FC<SuperButtonType> = ({children, changeCount, disabled}) => {
 
     const onClickHandler = () => {
+        if (changeCount) {
         changeCount()
+        }
     }
 
     return (
-        <div>
+        <>
             <button onClick={onClickHandler} disabled={disabled}>{children}</button>
-        </div>
+        </>
     );
 };
 
