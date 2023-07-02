@@ -20,10 +20,11 @@ export function App() {
     const [error, setError] = useState(false);
 
     const incriseCountHandler = () => {
+
         setSettingsCount({...settingsCount, startValue: settingsCount.startValue + 1})
     }
     const resetCountHandler = () => {
-        setSettingsCount({...settingsCount})
+        setSettingsCount({...settingsCount, startValue: InitialState.startValue})
     }
     const changeStartValueHandler = (newStartValue: number) => {
         setSettingsCount({...settingsCount, startValue: newStartValue})

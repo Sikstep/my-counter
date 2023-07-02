@@ -61,3 +61,27 @@
 .buttonBox button:hover {
     background-color: #ffffff;
 }
+.inputs {
+    display: flex;
+    border: 3px solid #00a3b2;
+    border-radius: 5px;
+    flex-direction: column;
+}
+.input {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+.input input {
+    text-align: center;
+    width: 30%;
+    border: 3px solid #00a3b2;
+    border-radius: 5px;
+}
+
+.settingsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
