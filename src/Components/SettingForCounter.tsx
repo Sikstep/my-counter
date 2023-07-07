@@ -47,13 +47,13 @@ export const SettingForCounter: React.FC<SettingForCounterType> = ({
     return (
         <div className={s.settingsWrapper}>
             <div className={s.inputs}>
-                <div className={s.input}>
+                <div className={s.inputCount}>
                     <div>max value:</div>
-                    <input type="number" value={newMaxValue} onChange={newMaxOnChangeHandler} />
+                    <input type="number" value={newMaxValue} onChange={newMaxOnChangeHandler} className={currentError ? s.inputError : ''}/>
                 </div>
-                <div className={s.input}>
+                <div className={s.inputCount}>
                     <div>start value:</div>
-                    <input type="number" value={newStartValue} onChange={newStartOnChangeHandler}/>
+                    <input type="number" value={newStartValue} onChange={newStartOnChangeHandler} className={currentError ? s.inputError : ''}/>
                 </div>
             </div>
             <div className={s.buttonBox}>
