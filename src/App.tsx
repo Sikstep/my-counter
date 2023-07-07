@@ -6,14 +6,19 @@ import {MainCounter} from './Components/MainCounter';
 import {SettingForCounter} from './Components/SettingForCounter';
 
 type SettingsCountType = {
-    startValue: string
-    maxValue: string
+    startInitValue: number
+    maxInitValue: number
+    startValue: number
+    maxValue: number
 }
 
 export function App() {
     const InitialState: SettingsCountType = {
-        startValue: '0',
-        maxValue: '0'
+        startInitValue: 0,
+        maxInitValue: 5,
+        startValue: 0,
+        maxValue: 5,
+
     }
 
     const [settingsCount, setSettingsCount] = useState<SettingsCountType>(InitialState);
@@ -26,10 +31,10 @@ export function App() {
     const resetCountHandler = () => {
         setSettingsCount({...settingsCount, startValue: InitialState.startValue})
     }
-    const changeStartValueHandler = (newStartValue: string) => {
+    const changeStartValueHandler = (newStartValue: number) => {
         setSettingsCount({...settingsCount, startValue: newStartValue})
     }
-    const changeMaxValueHandler = (newMaxValue: string) => {
+    const changeMaxValueHandler = (newMaxValue: number) => {
         setSettingsCount({...settingsCount, startValue: newMaxValue})
     }
 
@@ -41,11 +46,11 @@ export function App() {
                     <Route path={'/counter'}
                            element={<MainCounter
                                count={settingsCount.startValue}
-                               incCount={incriseCountHandler}
-                               someError={setError}
-                               resetCount={resetCountHandler}
                                maxValue={settingsCount.maxValue}
                                error={error}
+                               incCount={incriseCountHandler}
+                               resetCount={resetCountHandler}
+                               someError={setError}
                            />}/>
                     <Route path={'/settings'} element={<SettingForCounter
                         startValue={settingsCount.startValue}

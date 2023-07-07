@@ -4,12 +4,12 @@ import s from '../App.module.css';
 import {SuperButton} from './SuperButton';
 
 type MainCounterType = {
-    count: string
+    count: number
+    maxValue: number
+    error: boolean
     incCount: () => void
     someError: (error: boolean) => void
     resetCount: () => void
-    maxValue: string
-    error: boolean
 
 }
 export const MainCounter: React.FC<MainCounterType> = ({
@@ -32,7 +32,7 @@ export const MainCounter: React.FC<MainCounterType> = ({
     return (
         <>
             <h2 className={s.h2Class}>
-                {error ? 'incorrect value!' : count}
+                {count}
             </h2>
             <div className={s.buttonBox}>
                 <SuperButton changeCount={incCountHandler}>Inc</SuperButton>

@@ -36,6 +36,10 @@
     border-radius: 5px;
 }
 
+.h2Class h2.error {
+
+}
+
 .maxCount {
     color: red;
 }
@@ -59,7 +63,7 @@
 }
 
 .buttonBox button:hover {
-    background-color: #ffffff;
+    background-color: #a6a1a1;
 }
 .inputs {
     display: flex;
@@ -80,14 +84,19 @@
     width: 30%;
     border: 3px solid #00a3b2;
     border-radius: 5px;
+    background-color: gray;
+}
+
+.inputCount input.inputError {
+    border: 3px solid red;
+    background-color: #d26c7b;
+}
+.inputCount input:active {
+
 }
 
 .settingsWrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.inputError {
-    border: 3px solid #ff001d;
 }

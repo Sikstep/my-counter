@@ -2,13 +2,12 @@ import React, {ChangeEvent, useState} from 'react';
 import {SuperButton} from './SuperButton';
 import {NavLink} from 'react-router-dom';
 import s from '../App.module.css'
-import {InputMessanger} from './InputMessanger';
 
 type SettingForCounterType = {
-    startValue: string
-    maxValue: string
-    changeStartValue: (newStartValue: string) => void
-    changeMaxValue: (newMaxValue: string) => void
+    startValue: number
+    maxValue: number
+    changeStartValue: (newStartValue: number) => void
+    changeMaxValue: (newMaxValue: number) => void
     error: (error: boolean) => void
 }
 export const SettingForCounter: React.FC<SettingForCounterType> = ({
@@ -24,16 +23,16 @@ export const SettingForCounter: React.FC<SettingForCounterType> = ({
     const [currentError, setCurrentError] = useState(false);
 
     const newMaxOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-            setNewMaxValue(e.currentTarget.value);
-        if (e.currentTarget.value > newStartValue && e.currentTarget.value >= '0') {
+            setNewMaxValue(+e.currentTarget.value);
+        if (+e.currentTarget.value > newStartValue && +e.currentTarget.value >= 0 && newStartValue >= 0) {
             setCurrentError(false)
         } else {
             setCurrentError(true)
         }
     }
     const newStartOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-            setNewStartValue(e.currentTarget.value);
-        if (e.currentTarget.value < newMaxValue && e.currentTarget.value >= '0') {
+            setNewStartValue(+e.currentTarget.value);
+        if (+e.currentTarget.value < newMaxValue && +e.currentTarget.value >= 0) {
             setCurrentError(false)
         } else {
             setCurrentError(true)
