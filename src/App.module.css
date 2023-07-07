@@ -66,11 +66,12 @@
     border: 3px solid #00a3b2;
     border-radius: 5px;
     flex-direction: column;
+
 }
 .input {
     display: flex;
     justify-content: space-evenly;
-    padding: 5px;
+     padding: 5px;
 }
 
 .input input {

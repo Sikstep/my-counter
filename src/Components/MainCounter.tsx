@@ -4,13 +4,13 @@ import s from '../App.module.css';
 import {SuperButton} from './SuperButton';
 
 type MainCounterType = {
-    count: number
+    count: string
     incCount: () => void
-    someError: boolean
+    someError: (error: boolean) => void
     resetCount: () => void
-    maxValue: number
-    changeStartValue: (newStartValue: number) => void
-    changeMaxValue: (newMaxValue: number) => void
+    maxValue: string
+    error: boolean
+
 }
 export const MainCounter: React.FC<MainCounterType> = ({
                                                            incCount,
@@ -18,19 +18,28 @@ export const MainCounter: React.FC<MainCounterType> = ({
                                                            count,
                                                            resetCount,
                                                            maxValue,
-                                                           changeMaxValue,
-                                                           changeStartValue
+                                                           error
+
                                                        }) => {
+    const incCountHandler = () => {
+        if (count < maxValue) {
+            incCount()
+        } else {
+            someError(true)
+        }
+    }
 
     return (
         <>
             <h2 className={s.h2Class}>
-                {count}
+                {error ? 'incorrect value!' : count}
             </h2>
             <div className={s.buttonBox}>
-                <SuperButton changeCount={() => incCount()}>Inc</SuperButton>
+                <SuperButton changeCount={incCountHandler}>Inc</SuperButton>
                 <SuperButton changeCount={() => resetCount()}>Reset</SuperButton>
-                <NavLink to={'/settings'}><button>Set</button></NavLink>
+                <NavLink to={'/settings'}>
+                    <button>Set</button>
+                </NavLink>
             </div>
         </>
     );
