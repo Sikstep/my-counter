@@ -6,16 +6,12 @@ import {MainCounter} from './Components/MainCounter';
 import {SettingForCounter} from './Components/SettingForCounter';
 
 type SettingsCountType = {
-    startInitValue: number
-    maxInitValue: number
     startValue: number
     maxValue: number
 }
 
 export function App() {
     const InitialState: SettingsCountType = {
-        startInitValue: 0,
-        maxInitValue: 5,
         startValue: 0,
         maxValue: 5,
 
