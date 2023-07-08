@@ -7,31 +7,33 @@ import {SettingForCounter} from './Components/SettingForCounter';
 
 type SettingsCountType = {
     startValue: number
+    currentValue: number
     maxValue: number
 }
 
 export function App() {
-    const InitialState: SettingsCountType = {
+
+    const [settingsCount, setSettingsCount] = useState<SettingsCountType>({
         startValue: 0,
+        currentValue: 0,
         maxValue: 5,
-
-    }
-
-    const [settingsCount, setSettingsCount] = useState<SettingsCountType>(InitialState);
+    });
     const [error, setError] = useState(false);
 
-    const incriseCountHandler = () => {
+    const incriseCurCountHandler = () => {
 
-        setSettingsCount({...settingsCount, startValue: settingsCount.startValue + 1})
+        setSettingsCount({...settingsCount, currentValue: settingsCount.currentValue + 1})
     }
     const resetCountHandler = () => {
-        setSettingsCount({...settingsCount, startValue: InitialState.startValue})
+        setSettingsCount({...settingsCount, currentValue: settingsCount.startValue})
     }
     const changeStartValueHandler = (newStartValue: number) => {
+        console.log(newStartValue)
         setSettingsCount({...settingsCount, startValue: newStartValue})
     }
     const changeMaxValueHandler = (newMaxValue: number) => {
-        setSettingsCount({...settingsCount, startValue: newMaxValue})
+        console.log(newMaxValue)
+        setSettingsCount({...settingsCount, maxValue: newMaxValue})
     }
 
     return (
@@ -41,10 +43,11 @@ export function App() {
                     <Route path={'/'} element={<Navigate to={'/counter'}/>}/>
                     <Route path={'/counter'}
                            element={<MainCounter
-                               count={settingsCount.startValue}
+                               startValue={settingsCount.startValue}
                                maxValue={settingsCount.maxValue}
+                               currentValue={settingsCount.currentValue}
                                error={error}
-                               incCount={incriseCountHandler}
+                               incCount={incriseCurCountHandler}
                                resetCount={resetCountHandler}
                                someError={setError}
                            />}/>
