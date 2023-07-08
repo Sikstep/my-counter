@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 import s from '../App.module.css';
 import {SuperButton} from './SuperButton';
@@ -23,6 +23,13 @@ export const MainCounter: React.FC<MainCounterType> = ({
                                                            error
 
                                                        }) => {
+    useEffect(() => {
+        if (currentValue >= maxValue) {
+            someError(true);
+        } else if (error) {
+            someError(false);
+        }
+    }, [currentValue, maxValue, someError, error]);
     const incCountHandler = () => {
         if (currentValue < maxValue) {
             incCount()

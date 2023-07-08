@@ -28,11 +28,11 @@ export function App() {
         setSettingsCount({...settingsCount, currentValue: settingsCount.startValue})
     }
     const changeStartValueHandler = (newStartValue: number) => {
-        console.log(newStartValue)
+        // console.log('inputStartValue - ' + newStartValue)
         setSettingsCount({...settingsCount, startValue: newStartValue})
     }
     const changeMaxValueHandler = (newMaxValue: number) => {
-        console.log(newMaxValue)
+        // console.log('inputMaxValue - ' +newMaxValue)
         setSettingsCount({...settingsCount, maxValue: newMaxValue})
     }
 

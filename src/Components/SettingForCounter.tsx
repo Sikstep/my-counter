@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import {SuperButton} from './SuperButton';
 import {NavLink} from 'react-router-dom';
 import s from '../App.module.css'
@@ -21,6 +21,10 @@ export const SettingForCounter: React.FC<SettingForCounterType> = ({
     const [newStartValue, setNewStartValue] = useState(startValue);
     const [newMaxValue, setNewMaxValue] = useState(maxValue);
     const [currentError, setCurrentError] = useState(false);
+
+    useEffect(() => {
+        setNewMaxValue(maxValue)
+    }, [maxValue])
 
     const newMaxOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
             setNewMaxValue(+e.currentTarget.value);
