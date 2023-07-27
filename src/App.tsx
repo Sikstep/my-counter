@@ -12,7 +12,7 @@ type SettingsCountType = {
 }
 
 const stateKey = 'STATE_KEY'
-const saveLocalStorage = (key: string, data: any) => {
+const saveLocalStorage = (key: string, data: SettingsCountType) => {
     localStorage.setItem(key, JSON.stringify(data))
 }
 
