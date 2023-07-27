@@ -5,6 +5,7 @@ import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
+import AppV2 from './AppV2';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -13,6 +14,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <App/>
+            {/*<AppV2/>*/}
         </BrowserRouter>
     </React.StrictMode>
 );

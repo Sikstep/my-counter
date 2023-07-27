@@ -29,7 +29,7 @@ export const MainCounter: React.FC<MainCounterType> = ({
         } else if (error) {
             someError(false);
         }
-    }, [currentValue, maxValue, someError, error]);
+    }, [currentValue, maxValue, someError, error, startValue]);
     const incCountHandler = () => {
         if (currentValue < maxValue) {
             incCount()

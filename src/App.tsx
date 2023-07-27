@@ -35,12 +35,12 @@ export function App() {
         // console.log('inputMaxValue - ' +newMaxValue)
         setSettingsCount({...settingsCount, maxValue: newMaxValue})
     }
-
+    console.log({error})
     return (
         <div className={s.app}>
             <div className={s.wrapper}>
                 <Routes>
-                    <Route path={'/'} element={<Navigate to={'/counter'}/>}/>
+                    <Route path={'/'} element={<Navigate to={'/settings'}/>}/>
                     <Route path={'/counter'}
                            element={<MainCounter
                                startValue={settingsCount.startValue}
