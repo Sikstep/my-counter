@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import s from './App.module.css';
 import {Navigate, Route, Routes} from 'react-router-dom';
@@ -11,13 +11,34 @@ type SettingsCountType = {
     maxValue: number
 }
 
+const stateKey = 'STATE_KEY'
+const saveLocalStorage = (key: string, data: any) => {
+    localStorage.setItem(key, JSON.stringify(data))
+}
+
+const getlocalStorage = (key: string) => {
+    let data = localStorage.getItem(key)
+    if (!data) return
+    return JSON.parse(data)
+}
+
 export function App() {
 
-    const [settingsCount, setSettingsCount] = useState<SettingsCountType>({
+    const initialState = {
         startValue: 0,
         currentValue: 0,
         maxValue: 5,
-    });
+    }
+
+
+    const [settingsCount, setSettingsCount] = useState<SettingsCountType>(
+        getlocalStorage(stateKey) || initialState
+    );
+
+
+    useEffect(() => {
+        saveLocalStorage(stateKey, settingsCount)
+    }, [settingsCount])
 
     const incriseCurCountHandler = () => {
         setSettingsCount(prevState => ({...prevState, currentValue: settingsCount.currentValue + 1}))
