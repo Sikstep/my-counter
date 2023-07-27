@@ -43,7 +43,6 @@ export function App() {
                     <Route path={'/'} element={<Navigate to={'/settings'}/>}/>
                     <Route path={'/counter'}
                            element={<MainCounter
-                               startValue={settingsCount.startValue}
                                maxValue={settingsCount.maxValue}
                                currentValue={settingsCount.currentValue}
                                incCount={incriseCurCountHandler}

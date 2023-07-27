@@ -4,7 +4,6 @@ import s from '../App.module.css';
 import {SuperButton} from './SuperButton';
 
 type MainCounterType = {
-    startValue: number
     maxValue: number
     currentValue: number
     incCount: () => void
@@ -14,8 +13,6 @@ type MainCounterType = {
 }
 export const MainCounter: React.FC<MainCounterType> = ({
                                                            incCount,
-
-                                                           startValue,
                                                            resetCount,
                                                            maxValue,
                                                            currentValue,
