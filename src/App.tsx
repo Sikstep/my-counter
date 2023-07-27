@@ -18,24 +18,24 @@ export function App() {
         currentValue: 0,
         maxValue: 5,
     });
-    const [error, setError] = useState(false);
 
     const incriseCurCountHandler = () => {
-
-        setSettingsCount({...settingsCount, currentValue: settingsCount.currentValue + 1})
+        setSettingsCount(prevState => ({...prevState, currentValue: settingsCount.currentValue + 1}))
     }
     const resetCountHandler = () => {
-        setSettingsCount({...settingsCount, currentValue: settingsCount.startValue})
+        setSettingsCount(prevState => ({...prevState, currentValue: settingsCount.startValue}))
     }
     const changeStartValueHandler = (newStartValue: number) => {
         // console.log('inputStartValue - ' + newStartValue)
-        setSettingsCount({...settingsCount, startValue: newStartValue})
+        setSettingsCount(prevState => ({...prevState, startValue: newStartValue}))
+        setSettingsCount(prevState => ({...prevState, currentValue: newStartValue}))
     }
     const changeMaxValueHandler = (newMaxValue: number) => {
         // console.log('inputMaxValue - ' +newMaxValue)
-        setSettingsCount({...settingsCount, maxValue: newMaxValue})
+
+        setSettingsCount(prevState => ({...prevState, maxValue: newMaxValue}))
     }
-    console.log({error})
+
     return (
         <div className={s.app}>
             <div className={s.wrapper}>
@@ -46,17 +46,16 @@ export function App() {
                                startValue={settingsCount.startValue}
                                maxValue={settingsCount.maxValue}
                                currentValue={settingsCount.currentValue}
-                               error={error}
                                incCount={incriseCurCountHandler}
                                resetCount={resetCountHandler}
-                               someError={setError}
+
                            />}/>
                     <Route path={'/settings'} element={<SettingForCounter
                         startValue={settingsCount.startValue}
                         maxValue={settingsCount.maxValue}
                         changeStartValue={changeStartValueHandler}
                         changeMaxValue={changeMaxValueHandler}
-                        error={setError}
+
                     />}/>
                 </Routes>
             </div>

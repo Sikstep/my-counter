@@ -36,11 +36,15 @@
     border-radius: 5px;
 }
 
-.h2Class h2.error {
-
-}
-
-.maxCount {
+.h2Class_error {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+    border: 3px solid #00a3b2;
+    border-radius: 5px;
     color: red;
 }
 

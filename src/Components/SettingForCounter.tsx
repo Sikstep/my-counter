@@ -8,14 +8,14 @@ type SettingForCounterType = {
     maxValue: number
     changeStartValue: (newStartValue: number) => void
     changeMaxValue: (newMaxValue: number) => void
-    error: (error: boolean) => void
+
 }
 export const SettingForCounter: React.FC<SettingForCounterType> = ({
                                                                        startValue,
                                                                        maxValue,
                                                                        changeStartValue,
                                                                        changeMaxValue,
-                                                                       error
+
                                                                    }) => {
 
     const [newStartValue, setNewStartValue] = useState(startValue);
@@ -27,7 +27,7 @@ export const SettingForCounter: React.FC<SettingForCounterType> = ({
     }, [maxValue])
 
     const newMaxOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-            setNewMaxValue(+e.currentTarget.value);
+        setNewMaxValue(+e.currentTarget.value);
         if (+e.currentTarget.value > newStartValue && +e.currentTarget.value >= 0 && newStartValue >= 0) {
             setCurrentError(false)
         } else {
@@ -35,7 +35,7 @@ export const SettingForCounter: React.FC<SettingForCounterType> = ({
         }
     }
     const newStartOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-            setNewStartValue(+e.currentTarget.value);
+        setNewStartValue(+e.currentTarget.value);
         if (+e.currentTarget.value < newMaxValue && +e.currentTarget.value >= 0) {
             setCurrentError(false)
         } else {
@@ -43,8 +43,9 @@ export const SettingForCounter: React.FC<SettingForCounterType> = ({
         }
     }
     const onclickHandler = () => {
-            changeMaxValue(newMaxValue);
-            changeStartValue(newStartValue);
+        changeMaxValue(newMaxValue);
+        changeStartValue(newStartValue);
+
     }
 
     return (
@@ -52,15 +53,18 @@ export const SettingForCounter: React.FC<SettingForCounterType> = ({
             <div className={s.inputs}>
                 <div className={s.inputCount}>
                     <div>max value:</div>
-                    <input type="number" value={newMaxValue} onChange={newMaxOnChangeHandler} className={currentError ? s.inputError : ''}/>
+                    <input type="number" value={newMaxValue} onChange={newMaxOnChangeHandler}
+                           className={currentError ? s.inputError : ''}/>
                 </div>
                 <div className={s.inputCount}>
                     <div>start value:</div>
-                    <input type="number" value={newStartValue} onChange={newStartOnChangeHandler} className={currentError ? s.inputError : ''}/>
+                    <input type="number" value={newStartValue} onChange={newStartOnChangeHandler}
+                           className={currentError ? s.inputError : ''}/>
                 </div>
             </div>
             <div className={s.buttonBox}>
-                <NavLink to={'/counter'}><SuperButton changeCount={onclickHandler} disabled={currentError}>Set</SuperButton></NavLink>
+                <NavLink to={'/counter'}><SuperButton changeCount={onclickHandler}
+                                                      disabled={currentError}>Back</SuperButton></NavLink>
             </div>
         </div>
     );

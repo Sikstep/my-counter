@@ -9,7 +9,7 @@ export const SuperButton: React.FC<SuperButtonType> = ({children, changeCount, d
 
     const onClickHandler = () => {
         if (changeCount) {
-        changeCount()
+            changeCount()
         }
     }
 
