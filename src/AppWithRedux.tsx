@@ -7,6 +7,7 @@ import {SettingForCounter} from './Components/SettingForCounter';
 import {changeStartValueAC, incriseCurCountAC, resetCountAC, SettingsCountType} from './Reducers/CounterReducer';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootReducerType} from './Redux/store';
+import {MainCounterWithRedux} from './Components/MainCounterWithRedux';
 
 // const stateKey = 'STATE_KEY'
 // const saveLocalStorage = (key: string, data: SettingsCountType) => {
@@ -63,13 +64,7 @@ export function AppWithRedux () {
                 <Routes>
                     <Route path={'/'} element={<Navigate to={'/settings'}/>}/>
                     <Route path={'/counter'}
-                           element={<MainCounter
-                               maxValue={settingsCount.maxValue}
-                               currentValue={settingsCount.currentValue}
-                               incCount={incriseCurCountHandler}
-                               resetCount={resetCountHandler}
-
-                           />}/>
+                           element={<MainCounterWithRedux/>}/>
                     <Route path={'/settings'} element={<SettingForCounter
                         startValue={settingsCount.startValue}
                         maxValue={settingsCount.maxValue}

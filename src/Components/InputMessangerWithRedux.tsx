@@ -1,13 +1,13 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from '../App.module.css'
-
-type InputCountType = {
-    startValue?: number
-    maxValue?: number
-    inputName: string
-    newStartValue?: (newValue: number | undefined) => void
-    newMaxValue?: (newValue: number | undefined) => void
-}
+//
+// type InputCountType = {
+//     startValue?: number
+//     maxValue?: number
+//     inputName: string
+//     newStartValue?: (newValue: number | undefined) => void
+//     newMaxValue?: (newValue: number | undefined) => void
+// }
 
 export const InputMessanger: React.FC<InputCountType> = ({startValue, maxValue, inputName, newStartValue, newMaxValue}) => {
 
