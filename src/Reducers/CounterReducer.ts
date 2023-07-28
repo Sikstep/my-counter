@@ -36,26 +36,26 @@ type incriseCurCountType = ReturnType<typeof incriseCurCountAC>
 type resetCountType = ReturnType<typeof resetCountAC>
 type changeStartValueType = ReturnType<typeof changeStartValueAC>
 type changeMaxValueType = ReturnType<typeof changeMaxValueAC>
-const incriseCurCountAC = () => {
+export const incriseCurCountAC = () => {
     return {
         type: 'INCRISE_CURR_COUNT'
     } as const
 }
 
-const resetCountAC = () => {
+export const resetCountAC = () => {
     return {
         type: 'RESET_COUNT'
     } as const
 }
 
-const changeStartValueAC = (newStartValue: number) => {
+export const changeStartValueAC = (newStartValue: number) => {
     return {
         type: 'CHANGE_START_VALUE',
         payload: newStartValue
     } as const
 }
 
-const changeMaxValueAC = (newMaxValue: number) => {
+export const changeMaxValueAC = (newMaxValue: number) => {
     return {
         type: 'CHANGE_MAX_VALUE',
         payload: newMaxValue
