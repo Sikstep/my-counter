@@ -4,12 +4,7 @@ import s from './App.module.css';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {MainCounter} from './Components/MainCounter';
 import {SettingForCounter} from './Components/SettingForCounter';
-
-type SettingsCountType = {
-    startValue: number
-    currentValue: number
-    maxValue: number
-}
+import { SettingsCountType } from './Reducers/CounterReducer';
 
 const stateKey = 'STATE_KEY'
 const saveLocalStorage = (key: string, data: SettingsCountType) => {
@@ -22,7 +17,7 @@ const getlocalStorage = (key: string) => {
     return JSON.parse(data)
 }
 
-export function App() {
+export function AppWithRedux () {
 
     const initialState = {
         startValue: 0,
@@ -31,14 +26,12 @@ export function App() {
     }
 
 
-    const [settingsCount, setSettingsCount] = useState<SettingsCountType>(
-        getlocalStorage(stateKey) || initialState
-    );
+    const [settingsCount, setSettingsCount] = useState<SettingsCountType>(getlocalStorage(stateKey) || initialState);
 
 
-    useEffect(() => {
-        saveLocalStorage(stateKey, settingsCount)
-    }, [settingsCount])
+    // useEffect(() => {
+    //     saveLocalStorage(stateKey, settingsCount)
+    // }, [settingsCount])
 
     const incriseCurCountHandler = () => {
         setSettingsCount(prevState => ({...prevState, currentValue: settingsCount.currentValue + 1}))

@@ -30,11 +30,9 @@ export function App() {
         maxValue: 5,
     }
 
-
     const [settingsCount, setSettingsCount] = useState<SettingsCountType>(
         getlocalStorage(stateKey) || initialState
     );
-
 
     useEffect(() => {
         saveLocalStorage(stateKey, settingsCount)
