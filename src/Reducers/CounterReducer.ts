@@ -4,7 +4,7 @@ export type SettingsCountType = {
     currentValue: number
     maxValue: number
 }
-type ActionsType = incriseCurCountType | resetCountType | changeStartValueType
+type ActionsType = incriseCurCountType | resetCountType | changeStartValueType | changeMaxValueType
 
 
 let initState: SettingsCountType = {
@@ -23,6 +23,9 @@ export const CounterReducer = (state = initState , action: ActionsType): Setting
      case 'CHANGE_START_VALUE': {
          return {...state, startValue: action.payload, currentValue: action.payload}
      }
+     case 'CHANGE_MAX_VALUE': {
+         return {...state, maxValue: action.payload}
+     }
      default:
          return state
  }
@@ -32,6 +35,7 @@ export const CounterReducer = (state = initState , action: ActionsType): Setting
 type incriseCurCountType = ReturnType<typeof incriseCurCountAC>
 type resetCountType = ReturnType<typeof resetCountAC>
 type changeStartValueType = ReturnType<typeof changeStartValueAC>
+type changeMaxValueType = ReturnType<typeof changeMaxValueAC>
 const incriseCurCountAC = () => {
     return {
         type: 'INCRISE_CURR_COUNT'
