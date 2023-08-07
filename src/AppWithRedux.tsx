@@ -1,12 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import s from './App.module.css';
 import {Navigate, Route, Routes} from 'react-router-dom';
-import {MainCounter} from './Components/MainCounter';
-import {SettingForCounter} from './Components/SettingForCounter';
-import {changeStartValueAC, incriseCurCountAC, resetCountAC, SettingsCountType} from './Reducers/CounterReducer';
-import {useDispatch, useSelector} from 'react-redux';
-import {RootReducerType} from './Redux/store';
 import {MainCounterWithRedux} from './Components/MainCounterWithRedux';
 import {SettingForCounterWithRedux} from './Components/SettingForCounterWithRedux';
 
@@ -23,41 +18,41 @@ import {SettingForCounterWithRedux} from './Components/SettingForCounterWithRedu
 
 export function AppWithRedux() {
 
-    const initialState = {
-        startValue: 0,
-        currentValue: 0,
-        maxValue: 5,
-    }
+    // const initialState = {
+    //     startValue: 0,
+    //     currentValue: 0,
+    //     maxValue: 5,
+    // }
 
 
     // const [settingsCount, setSettingsCount] = useState<SettingsCountType>(getlocalStorage(stateKey) || initialState);
-    const state = useSelector<RootReducerType, SettingsCountType>(state => state.counterReducer)
-    const dispatch = useDispatch();
+    // const state = useSelector<RootReducerType, SettingsCountType>(state => state.counterReducer)
+    // const dispatch = useDispatch();
 
     // useEffect(() => {
     //     saveLocalStorage(stateKey, settingsCount)
     // }, [settingsCount])
 
-    const incriseCurCountHandler = () => {
-        // setSettingsCount(prevState => ({...prevState, currentValue: settingsCount.currentValue + 1}))
-        dispatch(incriseCurCountAC())
-    }
-    const resetCountHandler = () => {
-        // setSettingsCount(prevState => ({...prevState, currentValue: settingsCount.startValue}))
-        dispatch(resetCountAC())
-    }
-    const changeStartValueHandler = (newStartValue: number) => {
-        // console.log('inputStartValue - ' + newStartValue)
-        // setSettingsCount(prevState => ({...prevState, startValue: newStartValue}))
-        // setSettingsCount(prevState => ({...prevState, currentValue: newStartValue}))
-        dispatch(changeStartValueAC(newStartValue))
-    }
-    const changeMaxValueHandler = (newMaxValue: number) => {
-        // console.log('inputMaxValue - ' +newMaxValue)
-
-        // setSettingsCount(prevState => ({...prevState, maxValue: newMaxValue}))
-        dispatch(changeStartValueAC(newMaxValue))
-    }
+    // const incriseCurCountHandler = () => {
+    //     // setSettingsCount(prevState => ({...prevState, currentValue: settingsCount.currentValue + 1}))
+    //     dispatch(incriseCurCountAC())
+    // }
+    // const resetCountHandler = () => {
+    //     // setSettingsCount(prevState => ({...prevState, currentValue: settingsCount.startValue}))
+    //     dispatch(resetCountAC())
+    // }
+    // const changeStartValueHandler = (newStartValue: number) => {
+    //     // console.log('inputStartValue - ' + newStartValue)
+    //     // setSettingsCount(prevState => ({...prevState, startValue: newStartValue}))
+    //     // setSettingsCount(prevState => ({...prevState, currentValue: newStartValue}))
+    //     dispatch(changeStartValueAC(newStartValue))
+    // }
+    // const changeMaxValueHandler = (newMaxValue: number) => {
+    //     // console.log('inputMaxValue - ' +newMaxValue)
+    //
+    //     // setSettingsCount(prevState => ({...prevState, maxValue: newMaxValue}))
+    //     dispatch(changeStartValueAC(newMaxValue))
+    // }
 
     return (
         <div className={s.app}>
