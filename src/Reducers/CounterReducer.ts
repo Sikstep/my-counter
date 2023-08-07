@@ -6,7 +6,7 @@ export type SettingsCountType = {
 }
 type ActionsType = incriseCurCountType | resetCountType | changeStartValueType | changeMaxValueType
 
-
+// without thunk
 let initState: SettingsCountType = {
     startValue: 0,
     currentValue: 0,
