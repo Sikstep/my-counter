@@ -10,7 +10,7 @@ type ActionsType = incriseCurCountType | resetCountType | changeStartValueType |
 let initState: SettingsCountType = {
     startValue: 0,
     currentValue: 0,
-    maxValue: 0
+    maxValue: 5
 }
 export const CounterReducer = (state = initState , action: ActionsType): SettingsCountType => {
  switch (action.type) {
