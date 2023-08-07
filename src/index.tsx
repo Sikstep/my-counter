@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './App';
 import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
-import AppV2 from './AppV2';
+import {AppWithRedux} from './AppWithRedux';
+import {Provider} from 'react-redux';
+import {store} from './Redux/store';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -13,8 +14,11 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App/>
+            {/*<App/>*/}
             {/*<AppV2/>*/}
+            <Provider store={store}>
+                <AppWithRedux/>
+            </Provider>
         </BrowserRouter>
     </React.StrictMode>
 );
