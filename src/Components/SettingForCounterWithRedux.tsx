@@ -2,29 +2,29 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import {SuperButton} from './SuperButton';
 import {NavLink} from 'react-router-dom';
 import s from '../App.module.css'
+import {useDispatch, useSelector} from 'react-redux';
+import {RootReducerType} from '../Redux/store';
+import {changeMaxValueAC, changeStartValueAC, SettingsCountType} from '../Reducers/CounterReducer';
 
-type SettingForCounterType = {
-    startValue: number
-    maxValue: number
-    changeStartValue: (newStartValue: number) => void
-    changeMaxValue: (newMaxValue: number) => void
+// type SettingForCounterType = {
+//     startValue: number
+//     maxValue: number
+//     changeStartValue: (newStartValue: number) => void
+//     changeMaxValue: (newMaxValue: number) => void
+//
+// }
+export const SettingForCounterWithRedux = () => {
 
-}
-export const SettingForCounter: React.FC<SettingForCounterType> = ({
-                                                                       startValue,
-                                                                       maxValue,
-                                                                       changeStartValue,
-                                                                       changeMaxValue,
+    const state = useSelector<RootReducerType, SettingsCountType>(state => state.counterReducer)
+    const dispatch = useDispatch()
 
-                                                                   }) => {
-
-    const [newStartValue, setNewStartValue] = useState(startValue);
-    const [newMaxValue, setNewMaxValue] = useState(maxValue);
+    const [newStartValue, setNewStartValue] = useState(state.startValue);
+    const [newMaxValue, setNewMaxValue] = useState(state.maxValue);
     const [currentError, setCurrentError] = useState(false);
 
     useEffect(() => {
-        setNewMaxValue(maxValue)
-    }, [maxValue])
+        setNewMaxValue(state.maxValue)
+    }, [state.maxValue])
 
     const newMaxOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewMaxValue(+e.currentTarget.value);
@@ -43,8 +43,8 @@ export const SettingForCounter: React.FC<SettingForCounterType> = ({
         }
     }
     const onclickHandler = () => {
-        changeMaxValue(newMaxValue);
-        changeStartValue(newStartValue);
+        dispatch(changeMaxValueAC(newMaxValue));
+        dispatch(changeStartValueAC(newStartValue));
 
     }
 
