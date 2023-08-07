@@ -8,6 +8,7 @@ import {changeStartValueAC, incriseCurCountAC, resetCountAC, SettingsCountType} 
 import {useDispatch, useSelector} from 'react-redux';
 import {RootReducerType} from './Redux/store';
 import {MainCounterWithRedux} from './Components/MainCounterWithRedux';
+import {SettingForCounterWithRedux} from './Components/SettingForCounterWithRedux';
 
 // const stateKey = 'STATE_KEY'
 // const saveLocalStorage = (key: string, data: SettingsCountType) => {
@@ -20,7 +21,7 @@ import {MainCounterWithRedux} from './Components/MainCounterWithRedux';
 //     return JSON.parse(data)
 // }
 
-export function AppWithRedux () {
+export function AppWithRedux() {
 
     const initialState = {
         startValue: 0,
@@ -65,13 +66,7 @@ export function AppWithRedux () {
                     <Route path={'/'} element={<Navigate to={'/settings'}/>}/>
                     <Route path={'/counter'}
                            element={<MainCounterWithRedux/>}/>
-                    <Route path={'/settings'} element={<SettingForCounter
-                        startValue={settingsCount.startValue}
-                        maxValue={settingsCount.maxValue}
-                        changeStartValue={changeStartValueHandler}
-                        changeMaxValue={changeMaxValueHandler}
-
-                    />}/>
+                    <Route path={'/settings'} element={<SettingForCounterWithRedux/>}/>
                 </Routes>
             </div>
         </div>
