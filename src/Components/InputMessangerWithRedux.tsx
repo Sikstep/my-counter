@@ -1,5 +1,8 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from '../App.module.css'
+import {useSelector} from 'react-redux';
+import {RootReducerType} from '../Redux/store';
+import {SettingsCountType} from '../Reducers/CounterReducer';
 //
 // type InputCountType = {
 //     startValue?: number
@@ -9,9 +12,10 @@ import s from '../App.module.css'
 //     newMaxValue?: (newValue: number | undefined) => void
 // }
 
-export const InputMessanger: React.FC<InputCountType> = ({startValue, maxValue, inputName, newStartValue, newMaxValue}) => {
+export const InputMessangerWithRedux = () => {
+    const state = useSelector<RootReducerType, SettingsCountType>(state => state.counterReducer)
 
-    const [inputValue, setInputValue] = useState<number | undefined>(startValue ? startValue : maxValue);
+    const [inputValue, setInputValue] = useState<number | undefined>(state.startValue ? state.startValue : state.maxValue);
 
 
 
